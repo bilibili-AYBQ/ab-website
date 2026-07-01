@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AB杀毒软件 - 官方网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== 导航栏 ==================== -->
+        <nav class="navbar">
+            <div class="logo">AB杀毒软件</div>
+            <div class="nav-links">
+                <a href="#" data-page="home" class="active">首页</a>
+                <a href="#" data-page="update">病毒库更新</a>
+                <a href="#" data-page="changelog">更新日志</a>
+                <a href="#" data-page="feedback">反馈</a>
+                <a href="#" data-page="my">我的</a>
+                <a href="#" data-page="admin" id="adminNavLink" style="display:none;">后台管理</a>
+                <a href="#" data-page="about">关于</a>
+            </div>
+            <div class="nav-actions">
+                <span id="messageBadge" style="display:none; cursor:pointer;" onclick="switchPage('my')">📩</span>
+                <span id="loginBtn" onclick="showLogin()">登录</span>
+                <span id="logoutBtn" style="display:none;" onclick="logout()">退出</span>
+            </div>
+        </nav>
+
+        <!-- ==================== 滚动公告 ==================== -->
+        <div class="marquee">
+            <div class="marquee-icon">📢</div>
+            <div class="marquee-text">
+                <span>请不要点击任何外来的exe链接，请认准 'https://absdrj.netlify.app/' 此链接，官方QQ群：1094899318</span>
+            </div>
+        </div>
+
+        <!-- ==================== 页面容器 ==================== -->
+        <div id="page-container">
+            <!-- 首页 -->
+            <div id="home-page" class="page active">
+                <div class="carousel-section">
+                    <div class="carousel-container" id="carouselContainer">
+                        <div class="carousel-slide active" style="background-image: url('首页.png');"></div>
+                        <div class="carousel-slide" style="background-image: url('防护设置.png');"></div>
+                        <div class="carousel-slide" style="background-image: url('设置.png');"></div>
+                        <div class="carousel-slide" style="background-image: url('文件扫描.png');"></div>
+                        <div class="carousel-slide" style="background-image: url('工具箱.png');"></div>
+                    </div>
+                    <div class="carousel-indicators" id="indicators"></div>
+                </div>
+
+                <div class="version-tabs">
+                    <div class="version-tab active" data-version="cpp">C++ 版</div>
+                    <div class="version-tab" data-version="gui">GUI 版</div>
+                </div>
+
+                <div id="cpp-panel" class="version-panel active">
+                    <div class="download-content">
+                        <div class="screenshot-gallery">
+                            <div class="screenshot-card"><img src="guard.png" alt="防御效果"><p>防御效果</p></div>
+                            <div class="screenshot-card"><img src="main.png" alt="主页"><p>主页</p></div>
+                            <div class="screenshot-card"><img src="settings.png" alt="防御状态"><p>防御状态</p></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <h3>AB杀毒软件 C++ 版</h3>
+                            <p style="margin: 15px 0; color: #5a6e80;">轻量级 C++ 引擎 | 系统守护 | 实时拦截破坏性攻击</p>
+                            <ul class="feature-list" style="list-style: none;">
+                                <li>✅ 全盘/快速扫描</li>
+                                <li>✅ 实时监控 + 下载保护</li>
+                                <li>✅ 系统守护线程，自动修复系统策略</li>
+                                <li>✅ IFEO劫持防御、网络防火墙修复</li>
+                                <li>✅ 服务/BCD自愈</li>
+                            </ul>
+                            <a href="https://wwbos.lanzoue.com/if0KX3r7svkh" class="download-btn" target="_blank">立即下载 (C++版)</a>
+                            <p style="margin-top: 15px; font-size: 13px; color: #8a9aa8;">访问密码：1234 | 请以管理员身份运行</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gui-panel" class="version-panel">
+                    <div class="download-content">
+                        <div class="screenshot-gallery">
+                            <div class="screenshot-card"><img src="首页.png" alt="GUI首页"><p>首页</p></div>
+                            <div class="screenshot-card"><img src="防护设置.png" alt="防护设置"><p>防护设置</p></div>
+                            <div class="screenshot-card"><img src="设置.png" alt="设置"><p>设置</p></div>
+                            <div class="screenshot-card"><img src="文件扫描.png" alt="文件扫描"><p>文件扫描</p></div>
+                            <div class="screenshot-card"><img src="工具箱.png" alt="工具箱"><p>工具箱</p></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <h3>AB杀毒软件 GUI 版</h3>
+                            <p style="margin: 15px 0; color: #5a6e80;">PyQt5 现代化界面 | 深色/浅色主题 | 更丰富的交互体验</p>
+                            <ul class="feature-list" style="list-style: none;">
+                                <li>✅ 全盘/快速/活跃文件扫描</li>
+                                <li>✅ U盘保护 & 威胁弹窗预警</li>
+                                <li>✅ 工具箱（系统修复、文件修复）</li>
+                                <li>✅ 主题切换、亚克力效果</li>
+                                <li>✅ 日志搜索、导出、实时显示</li>
+                            </ul>
+                            <a href="https://wwbos.lanzoue.com/iFXW43tc35qj" class="download-btn" target="_blank">立即下载 (GUI版)</a>
+                            <p style="margin-top: 15px; font-size: 13px; color: #8a9aa8;">访问密码：1234 | 版本 0.2.3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 病毒库更新 -->
+            <div id="update-page" class="page hidden">
+                <div class="update-content">
+                    <h3>🔄 病毒库更新</h3>
+                    <p style="margin-bottom: 20px;">下载最新病毒库（2026-06-28 10:00）</p>
+                    <a href="https://wwbos.lanzoue.com/iPjvF3tc36yd" class="download-btn" target="_blank">立即下载病毒库</a>
+                    <p style="margin-top: 15px; font-size: 13px; color: #8a9aa8;">访问密码：1234</p>
+                    <div class="update-note">
+                        <strong>⚠️ 一定要看我！！！</strong><br><br>
+                        拿到最新病毒库以后请按以下步骤操作：<br>
+                        1. 打开任务管理器，结束 AB 杀毒软件 GUI 进程（或 C++ 版本进程）以及后端进程 <strong>AB_backend.exe</strong>。<br>
+                        2. 将下载的文件 <strong>virus.txt</strong> 重命名为 <strong>virus.dat</strong>。<br>
+                        3. 将重命名后的文件拖入 AB 杀毒软件安装目录，替换原有文件。<br>
+                        4. 重新打开 AB 杀毒软件（GUI 或 C++ 版本）。<br><br>
+                        <strong>一定要看完！！！</strong><br>
+                        -- B站阿颜棒球
+                    </div>
+                </div>
+            </div>
+
+            <!-- 更新日志 -->
+            <div id="changelog-page" class="page hidden">
+                <div class="changelog-content">
+                    <h2 style="text-align: center; margin-bottom: 10px;">更新日志</h2>
+                    <div class="version-tabs">
+                        <div class="version-tab active" data-changelog="cpp">C++ 版</div>
+                        <div class="version-tab" data-changelog="gui">GUI 版</div>
+                    </div>
+                    <div id="changelog-cpp" class="changelog-panel active">
+                        <ul class="changelog-list"><li>正在制作</li></ul>
+                    </div>
+                    <div id="changelog-gui" class="changelog-panel">
+                        <ul class="changelog-list">
+                            <li>修复扫描完成后程序自动退出的问题</li>
+                            <li>修复安装包没有安装后端（AB_backend.exe）的BUG</li>
+                            <li>优化注册表监控聚合弹窗，避免弹窗轰炸</li>
+                            <li>改进界面样式，去除窗口黑边</li>
+                            <li>增强扫描线程稳定性，解决卡顿问题</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 反馈页面 -->
+            <div id="feedback-page" class="page hidden">
+                <h2 style="margin-top:20px;">反馈与建议</h2>
+                <div class="feedback-tabs">
+                    <button class="feedback-tab active" data-type="virus">病毒库提交</button>
+                    <button class="feedback-tab" data-type="bug">BUG提交</button>
+                    <button class="feedback-tab" data-type="suggestion">改进建议</button>
+                </div>
+                <div id="feedback-form">
+                    <input type="text" id="feedbackTitle" placeholder="标题" required>
+                    <textarea id="feedbackContent" placeholder="详细描述..." required></textarea>
+                    <button id="submitFeedback">提交</button>
+                </div>
+                <div id="virusSubmitArea" style="display:none; text-align:center; padding:30px;">
+                    <p style="font-size:16px;">请加入官方QQ群：<strong>1094899318</strong> 提交病毒样本或特征码。</p>
+                    <a href="https://qm.qq.com/q/xxx" target="_blank" class="download-btn" style="margin-top:10px;">点击加群</a>
+                </div>
+            </div>
+
+            <!-- 我的页面 -->
+            <div id="my-page" class="page hidden">
+                <h2 style="margin-top:20px;">我的</h2>
+                <div id="profileArea" style="background:#f8fafc;padding:20px;border-radius:12px;margin-bottom:20px;">
+                    <p><strong>昵称：</strong><span id="nicknameDisplay">未设置</span></p>
+                    <div id="setNicknameArea">
+                        <input type="text" id="nicknameInput" placeholder="输入昵称（仅一次）" style="width:200px;padding:6px;">
+                        <button id="setNicknameBtn" style="padding:6px 16px;">设置昵称</button>
+                    </div>
+                </div>
+                <h3>邮件处理进度</h3>
+                <div id="feedbackList"></div>
+            </div>
+
+            <!-- ==================== 新增：管理员后台页面 ==================== -->
+            <div id="admin-page" class="page hidden">
+                <h2 style="margin-top:20px; margin-bottom:10px;">管理员后台 - 反馈管理</h2>
+                <p style="color:#6c7a8a; margin-bottom:20px;">在这里查看所有用户提交的反馈，并更新处理状态。</p>
+                <div style="overflow-x:auto; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <table id="admin-feedback-table" style="width:100%; border-collapse:collapse; font-size:14px;">
+                        <thead style="background:#f1f3f5; border-bottom:2px solid #eaeef2;">
+                            <tr>
+                                <th style="padding:12px 15px; text-align:left;">ID</th>
+                                <th style="padding:12px 15px; text-align:left;">用户</th>
+                                <th style="padding:12px 15px; text-align:left;">类型</th>
+                                <th style="padding:12px 15px; text-align:left;">标题</th>
+                                <th style="padding:12px 15px; text-align:left;">状态</th>
+                                <th style="padding:12px 15px; text-align:left; min-width:160px;">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-feedback-body">
+                            <tr><td colspan="6" style="padding:20px; text-align:center; color:#888;">加载中...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 关于 -->
+            <div id="about-page" class="page hidden">
+                <div class="about-content">
+                    <h2>关于 AB杀毒软件</h2>
+                    <p>AB杀毒软件是一款专注轻量、高效、纯粹的终端安全软件。我们坚持自主研发核心技术，为用户提供稳定、可靠的病毒防护方案。</p>
+                    <p>• 纯 C++ 引擎 + Python 智能界面<br>
+                    • 不打扰、不捆绑、无广告<br>
+                    • 本地高性能扫描，无云依赖<br>
+                    • 实时守护你的系统安全</p>
+                    <p>官方QQ群：1094899318</p>
+                    <p>© 2026 AB杀毒软件 | 你的电脑，由你掌控</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 AB杀毒软件 | 安全、纯净、免费</p>
+        </div>
+    </div>
+
+    <!-- ==================== 登录弹窗 ==================== -->
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>管理员登录</h2>
+            <input type="text" id="adminUsername" placeholder="用户名" value="admin">
+            <input type="password" id="adminPassword" placeholder="密码">
+            <button onclick="login()" style="width:100%;">登录</button>
+            <p id="loginError" style="color:red;display:none;margin-top:10px;"></p>
+        </div>
+    </div>
+
+    <!-- ==================== 消息弹窗 ==================== -->
+    <div id="messageModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeMessageModal()">&times;</span>
+            <h2>我的消息</h2>
+            <div id="messageList"></div>
+            <button onclick="clearMessages()" style="margin-top:10px;">清空全部消息</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+/* ==================== 全局重置 & 基础 ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background-color: #ffffff;
+    color: #1f2d3d;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==================== 导航栏 ==================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eaeef2;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00a2ff;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #1f2d3d;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+.nav-links a:hover, .nav-links a.active {
+    color: #00a2ff;
+}
+
+/* 导航右侧按钮 */
+.nav-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.nav-actions span {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2d3d;
+}
+.nav-actions span:hover {
+    color: #00a2ff;
+}
+#messageBadge {
+    position: relative;
+}
+#messageBadge::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -6px;
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
+    display: none;
+}
+#messageBadge.has-unread::after {
+    display: block;
+}
+
+/* ==================== 滚动公告 ==================== */
+.marquee {
+    background-color: #f5f7fa;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+    border: 1px solid #eaeef2;
+}
+.marquee-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.marquee-text {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.marquee-text span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 20s linear infinite;
+    font-size: 14px;
+    color: #4a5b6e;
+}
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* ==================== 页面切换 ==================== */
+.page {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+.page.fade-out {
+    opacity: 0;
+}
+.page.hidden {
+    display: none;
+}
+.page.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== 轮播图 ==================== */
+.carousel-section {
+    margin: 40px 0 60px 0;
+    position: relative;
+    width: 100%;
+    background-color: #f8fafc;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    z-index: 2;
+}
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.indicator.active {
+    background-color: #00a2ff;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* ==================== 版本切换 ==================== */
+.version-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0 20px;
+    border-bottom: 2px solid #eaeef2;
+    padding-bottom: 15px;
+}
+.version-tab {
+    font-size: 18px;
+    font-weight: 600;
+    color: #6c7a8a;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: all 0.2s;
+}
+.version-tab.active {
+    color: #00a2ff;
+    border-bottom: 2px solid #00a2ff;
+    margin-bottom: -17px;
+}
+
+.version-panel {
+    display: none;
+}
+.version-panel.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+/* ==================== 下载内容 ==================== */
+.download-content {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 30px;
+    margin: 20px 0 50px;
+    min-height: 500px;
+}
+.download-btn {
+    display: inline-block;
+    background-color: #00a2ff;
+    color: white;
+    padding: 12px 36px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+}
+.download-btn:hover {
+    background-color: #0088cc;
+}
+.screenshot-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.screenshot-card {
+    width: 200px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+.screenshot-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.screenshot-card p {
+    font-size: 14px;
+    color: #4a5b6e;
+}
+.feature-list {
+    margin: 30px 0;
+    padding: 0 20px;
+}
+.feature-list li {
+    margin: 12px 0;
+    color: #3a4a5c;
+}
+
+/* ==================== 病毒库更新页 ==================== */
+.update-content {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 40px;
+    margin: 40px 0;
+    text-align: center;
+}
+.update-content h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1f2d3d;
+}
+.update-note {
+    background: #fff3e0;
+    border-left: 4px solid #ff9800;
+    padding: 20px;
+    margin: 30px auto;
+    text-align: left;
+    max-width: 600px;
+    border-radius: 8px;
+    color: #5a3e0b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.update-note strong {
+    color: #d32f2f;
+}
+
+/* ==================== 更新日志页 ==================== */
+.changelog-content {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 40px;
+    margin: 40px 0;
+}
+.changelog-panel {
+    display: none;
+}
+.changelog-panel.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+.changelog-list {
+    margin: 30px 0;
+    padding: 0 20px;
+    list-style: disc;
+    text-align: left;
+}
+.changelog-list li {
+    margin: 12px 0;
+    color: #3a4a5c;
+    font-size: 15px;
+}
+
+/* ==================== 关于页 ==================== */
+.about-content {
+    max-width: 800px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 40px 20px;
+}
+.about-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #1f2d3d;
+}
+.about-content p {
+    font-size: 16px;
+    color: #5a6e80;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* ==================== 页脚 ==================== */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #eaeef2;
+    color: #6c7a8a;
+    font-size: 14px;
+    margin-top: 60px;
+}
+
+/* ==================== 模态框（登录/消息） ==================== */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal.hidden {
+    display: none;
+}
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 420px;
+    max-width: 90%;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+}
+.modal-content .close:hover {
+    color: #000;
+}
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.modal-content button {
+    background: #00a2ff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.modal-content button:hover {
+    background: #0088cc;
+}
+
+/* ==================== 管理员后台表格 ==================== */
+#admin-feedback-table tr {
+    border-bottom: 1px solid #f0f2f5;
+}
+#admin-feedback-table tr:hover {
+    background-color: #f8fafc;
+}
+#admin-feedback-table td {
+    padding: 12px 15px;
+    vertical-align: middle;
+}
+#admin-feedback-table select {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 13px;
+    cursor: pointer;
+}
+#admin-feedback-table select:hover {
+    border-color: #00a2ff;
+}
+#admin-feedback-table .status {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+#admin-feedback-table .status.pending { background: #ffc107; color: #333; }
+#admin-feedback-table .status.verifying { background: #17a2b8; color: white; }
+#admin-feedback-table .status.improving { background: #007bff; color: white; }
+#admin-feedback-table .status.done { background: #28a745; color: white; }
+#admin-feedback-table .status.notfound { background: #6c757d; color: white; }
+
+/* 用于消息的小红点已存在，无需重复 */
+
+/* ==================== 反馈页面 ==================== */
+.feedback-tabs {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+.feedback-tab {
+    padding: 6px 18px;
+    background: #eee;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.feedback-tab.active {
+    background: #00a2ff;
+    color: white;
+}
+#feedback-form {
+    max-width: 600px;
+}
+#feedback-form input, #feedback-form textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#feedback-form textarea {
+    height: 120px;
+}
+#feedback-form button {
+    background: #00a2ff;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#feedback-form button:hover {
+    background: #0088cc;
+}
+
+/* ==================== 我的页面（反馈列表） ==================== */
+#profileArea {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+#profileArea input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#profileArea button {
+    padding: 6px 16px;
+    background: #00a2ff;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+}
+#profileArea button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.feedback-item {
+    border-bottom: 1px solid #eaeef2;
+    padding: 15px 0;
+}
+.feedback-item .status {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 10px;
+    font-weight: 500;
+}
+.feedback-item .status.pending { background: #ffc107; color: #333; }
+.feedback-item .status.verifying { background: #17a2b8; color: white; }
+.feedback-item .status.improving { background: #007bff; color: white; }
+.feedback-item .status.done { background: #28a745; color: white; }
+.feedback-item .status.notfound { background: #6c757d; color: white; }
+
+/* 小圆圈旋转动画（处理中） */
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-top-color: #00a2ff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==================== 消息列表 ==================== */
+#messageList .feedback-item {
+    padding: 10px 0;
+}
+#messageList .feedback-item p {
+    margin: 4px 0;
+}
+
+/* ==================== 响应式 ==================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    .nav-links {
+        justify-content: center;
+    }
+    .version-tabs {
+        gap: 15px;
+    }
+    .screenshot-card {
+        width: 150px;
+    }
+    .download-btn {
+        padding: 10px 24px;
+        font-size: 16px;
+    }
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    .feedback-tabs {
+        flex-wrap: wrap;
+    }
+}
