@@ -1,0 +1,16 @@
+{
+  "name": "ab-website",
+  "version": "1.0.0",
+  "description": "AB杀毒软件官网动态版",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-localstorage": "^3.0.5",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.3",
+    "uuid": "^9.0.0"
+  }
+}
